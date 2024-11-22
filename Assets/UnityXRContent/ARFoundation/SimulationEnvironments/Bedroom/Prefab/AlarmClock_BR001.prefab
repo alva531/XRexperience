@@ -5,8 +5,14 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15,12 +21,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3877787e-19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3877787e-19
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
         type: 3}
@@ -36,16 +47,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ca7535859821de8418382453fe167052,
         type: 3}
@@ -73,4 +74,7 @@ PrefabInstance:
       value: AlarmClock_BR001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca7535859821de8418382453fe167052, type: 3}
