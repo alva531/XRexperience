@@ -3042,7 +3042,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""name"": ""Spawn Object"",
                     ""type"": ""Button"",
                     ""id"": ""1415f3c5-fc5f-4f58-a044-4a69560151f2"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -3052,7 +3052,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""fea81b99-07f5-426a-beba-5e0832c14855"",
-                    ""path"": ""<TouchscreenGestureInputController>/tapStartPosition"",
+                    ""path"": ""<Touchscreen>/primaryTouch/startPosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -3184,7 +3184,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""d919e652-0e4a-4f12-a1f9-b18cead206e2"",
-                    ""path"": ""<TouchscreenGestureInputController>/fingerCount"",
+                    ""path"": ""<Touchscreen>/{fingerCount}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

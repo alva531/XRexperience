@@ -59,16 +59,19 @@ public class ScanTest : MonoBehaviour
 
     void Update()
     {
+        print(touchPosAR.ReadValue<Vector2>() );
+        print(touchAR.IsPressed());
+/*         print(touchCountAR.ReadValue<int>());
         if (touchCountAR.ReadValue<int>() <= 0)
-            return;
+            return; */
         RaycastHit hit;
         Ray ray = ARcam.ScreenPointToRay(touchPosAR.ReadValue<Vector2>());
 
 
 
-        if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits))
+        if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits) && touchAR.IsPressed())
         {
-            if ( touchAR.IsPressed() && instanceofThingtoSpawn == null)
+            if (instanceofThingtoSpawn == null)
             {
 
                 text.SetText("hello world but AR!");
