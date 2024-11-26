@@ -28,8 +28,16 @@ public class ScanTest : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI text;
 
+    public XRIDefaultInputActions assEt;
+    
+
     [SerializeField]
     InputAction touchAR;
+    [SerializeField]
+    InputAction touchCountAR;
+
+    [SerializeField]
+    InputAction touchPosAR;
     void Awake()
     {
         instanceofThingtoSpawn = null;
@@ -39,19 +47,26 @@ public class ScanTest : MonoBehaviour
 
     void Start()
     {
-        touchAR = InputSystem.actions.FindAction("Spawn Object");
+        assEt = new XRIDefaultInputActions();
+        touchAR = assEt.FindAction("Spawn Object");
+        touchCountAR = assEt.FindAction("Screen Touch Count");
+        touchPosAR =  assEt.FindAction("Tap Start Position");
+        
+        touchAR.Enable();
+        touchCountAR.Enable();
+        touchPosAR.Enable();
     }
 
     void Update()
     {
-        if (Input.touchCount == 0)
+        if (touchCountAR.ReadValue<int>() <= 0)
             return;
         RaycastHit hit;
-        Ray ray = ARcam.ScreenPointToRay(Input.GetTouch(0).position);
+        Ray ray = ARcam.ScreenPointToRay(touchPosAR.ReadValue<Vector2>());
 
 
 
-        if (m_RaycastManager.Raycast(Input.GetTouch(0).position, m_hits))
+        if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits))
         {
             if ( touchAR.IsPressed() && instanceofThingtoSpawn == null)
             {
