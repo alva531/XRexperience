@@ -6,6 +6,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class ScanTest : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class ScanTest : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI text;
+
+    [SerializeField]
+    InputAction touchAR;
     void Awake()
     {
         instanceofThingtoSpawn = null;
@@ -33,7 +37,10 @@ public class ScanTest : MonoBehaviour
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
     }
 
-
+    void Start()
+    {
+        touchAR = InputSystem.actions.FindAction("Spawn Object");
+    }
 
     void Update()
     {
@@ -46,7 +53,7 @@ public class ScanTest : MonoBehaviour
 
         if (m_RaycastManager.Raycast(Input.GetTouch(0).position, m_hits))
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began && instanceofThingtoSpawn == null)
+            if ( touchAR.IsPressed() && instanceofThingtoSpawn == null)
             {
 
                 text.SetText("hello world but AR!");
@@ -77,19 +84,19 @@ public class ScanTest : MonoBehaviour
                     
                 }
             }
-            else if (Input.GetTouch(0).phase == TouchPhase.Began && Input.touchCount == 1)
+/*             else if ( touchAR.IsPressed())
             {
                 if (Physics.Raycast(ray, out hit) && (!instanceofThingtoSpawn2.transform.GetChild(5).gameObject.activeSelf && !instanceofThingtoSpawn2.transform.GetChild(9).gameObject.activeSelf))
                 {
                     print(hit.collider.gameObject.tag);
                 }
-            }
+            } */
 
         }
 
 
 
-        if (Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved )
+/*         if (Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved )
         {        
             if (Input.GetTouch(0).position.y > Input.GetTouch(1).position.y )
             {
@@ -130,7 +137,7 @@ public class ScanTest : MonoBehaviour
                     } 
                 }
             }
-        }
+        } */
         
 
  
