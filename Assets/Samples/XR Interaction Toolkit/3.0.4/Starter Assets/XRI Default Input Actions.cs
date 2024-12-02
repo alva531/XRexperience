@@ -3046,6 +3046,15 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drag Test"",
+                    ""type"": ""Value"",
+                    ""id"": ""ba13f1d4-e27d-4a93-900a-41e7d0a724e0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -3334,6 +3343,17 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""action"": ""Spawn Object"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0be14763-6f08-405f-939b-889de95796fe"",
+                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -3448,6 +3468,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_TouchscreenGestures_TwistDeltaRotation = m_TouchscreenGestures.FindAction("Twist Delta Rotation", throwIfNotFound: true);
         m_TouchscreenGestures_ScreenTouchCount = m_TouchscreenGestures.FindAction("Screen Touch Count", throwIfNotFound: true);
         m_TouchscreenGestures_SpawnObject = m_TouchscreenGestures.FindAction("Spawn Object", throwIfNotFound: true);
+        m_TouchscreenGestures_DragTest = m_TouchscreenGestures.FindAction("Drag Test", throwIfNotFound: true);
     }
 
     ~@XRIDefaultInputActions()
@@ -4476,6 +4497,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_TouchscreenGestures_TwistDeltaRotation;
     private readonly InputAction m_TouchscreenGestures_ScreenTouchCount;
     private readonly InputAction m_TouchscreenGestures_SpawnObject;
+    private readonly InputAction m_TouchscreenGestures_DragTest;
     public struct TouchscreenGesturesActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -4490,6 +4512,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         public InputAction @TwistDeltaRotation => m_Wrapper.m_TouchscreenGestures_TwistDeltaRotation;
         public InputAction @ScreenTouchCount => m_Wrapper.m_TouchscreenGestures_ScreenTouchCount;
         public InputAction @SpawnObject => m_Wrapper.m_TouchscreenGestures_SpawnObject;
+        public InputAction @DragTest => m_Wrapper.m_TouchscreenGestures_DragTest;
         public InputActionMap Get() { return m_Wrapper.m_TouchscreenGestures; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -4529,6 +4552,9 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @SpawnObject.started += instance.OnSpawnObject;
             @SpawnObject.performed += instance.OnSpawnObject;
             @SpawnObject.canceled += instance.OnSpawnObject;
+            @DragTest.started += instance.OnDragTest;
+            @DragTest.performed += instance.OnDragTest;
+            @DragTest.canceled += instance.OnDragTest;
         }
 
         private void UnregisterCallbacks(ITouchscreenGesturesActions instance)
@@ -4563,6 +4589,9 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @SpawnObject.started -= instance.OnSpawnObject;
             @SpawnObject.performed -= instance.OnSpawnObject;
             @SpawnObject.canceled -= instance.OnSpawnObject;
+            @DragTest.started -= instance.OnDragTest;
+            @DragTest.performed -= instance.OnDragTest;
+            @DragTest.canceled -= instance.OnDragTest;
         }
 
         public void RemoveCallbacks(ITouchscreenGesturesActions instance)
@@ -4696,5 +4725,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         void OnTwistDeltaRotation(InputAction.CallbackContext context);
         void OnScreenTouchCount(InputAction.CallbackContext context);
         void OnSpawnObject(InputAction.CallbackContext context);
+        void OnDragTest(InputAction.CallbackContext context);
     }
 }

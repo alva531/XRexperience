@@ -7,6 +7,7 @@ using UnityEngine.XR.ARSubsystems;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.Mathematics;
 
 public class ScanTest : MonoBehaviour
 {
@@ -24,10 +25,6 @@ public class ScanTest : MonoBehaviour
     GameObject instanceofThingtoSpawn2;
     float staleDist = 0;
     int LayerIgnoreRaycast;
-
-    [SerializeField]
-    TextMeshProUGUI text;
-
     public XRIDefaultInputActions assEt;
     
 
@@ -35,9 +32,12 @@ public class ScanTest : MonoBehaviour
     InputAction touchAR;
     [SerializeField]
     InputAction touchCountAR;
-
+    
     [SerializeField]
     InputAction touchPosAR;
+
+    [SerializeField]
+    InputAction dragAR;
     void Awake()
     {
         instanceofThingtoSpawn = null;
@@ -51,30 +51,26 @@ public class ScanTest : MonoBehaviour
         touchAR = assEt.FindAction("Spawn Object");
         touchCountAR = assEt.FindAction("Screen Touch Count");
         touchPosAR =  assEt.FindAction("Tap Start Position");
+        dragAR = assEt.FindAction("Drag Test");
         
         touchAR.Enable();
         touchCountAR.Enable();
         touchPosAR.Enable();
+        dragAR.Enable();
     }
 
     void Update()
     {
         print(touchPosAR.ReadValue<Vector2>() );
         print(touchAR.IsPressed());
-/*         print(touchCountAR.ReadValue<int>());
-        if (touchCountAR.ReadValue<int>() <= 0)
-            return; */
+
         RaycastHit hit;
         Ray ray = ARcam.ScreenPointToRay(touchPosAR.ReadValue<Vector2>());
-
-
 
         if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits) && touchAR.IsPressed())
         {
             if (instanceofThingtoSpawn == null)
             {
-
-                text.SetText("hello world but AR!");
 
 
                 if (Physics.Raycast(ray, out hit))
@@ -110,55 +106,16 @@ public class ScanTest : MonoBehaviour
                 }
             } */
 
+            if (Mathf.Abs(dragAR.ReadValue<Vector2>().x) > 0f)
+            {
+                if (instanceofThingtoSpawn != null)
+                {
+                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                }
+            }
+
+            return;
         }
-
-
-
-/*         if (Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved )
-        {        
-            if (Input.GetTouch(0).position.y > Input.GetTouch(1).position.y )
-            {
-                if (Input.GetTouch(0).deltaPosition.y > 0)
-                {
-                    instanceofThingtoSpawn.transform.localScale += new Vector3(0.03f,0.03f,0.03f);
-                    if ( instanceofThingtoSpawn.transform.localScale.x >= 3)
-                    {
-                        instanceofThingtoSpawn.transform.localScale = new Vector3(2f,2f,2f); 
-                    } 
-                }
-                else
-                {
-                    instanceofThingtoSpawn.transform.localScale -= new Vector3(0.03f,0.03f,0.03f); 
-                    if (instanceofThingtoSpawn.transform.localScale.x <= 0.1)
-                    {
-                        instanceofThingtoSpawn.transform.localScale = new Vector3(0.01f,0.01f,0.01f);  
-                    } 
-                }
-
-            }
-            else if (Input.GetTouch(0).position.y < Input.GetTouch(1).position.y)
-            {
-                if (Input.GetTouch(1).deltaPosition.y > 0)
-                {
-                    instanceofThingtoSpawn.transform.localScale += new Vector3(0.03f,0.03f,0.03f);
-                    if ( instanceofThingtoSpawn.transform.localScale.x >= 3)
-                    {
-                        instanceofThingtoSpawn.transform.localScale = new Vector3(2f,2f,2f); 
-                    } 
-                }
-                else
-                {
-                    instanceofThingtoSpawn.transform.localScale -= new Vector3(0.03f,0.03f,0.03f); 
-                    if (instanceofThingtoSpawn.transform.localScale.x <= 0.01)
-                    {
-                        instanceofThingtoSpawn.transform.localScale = new Vector3(0.01f,0.01f,0.01f);  
-                    } 
-                }
-            }
-        } */
-        
-
- 
 
     }
 

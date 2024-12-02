@@ -3023,6 +3023,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Drag Test",
+                    "type": "Value",
+                    "id": "ba13f1d4-e27d-4a93-900a-41e7d0a724e0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -3311,6 +3320,17 @@
                     "action": "Spawn Object",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0be14763-6f08-405f-939b-889de95796fe",
+                    "path": "<Touchscreen>/primaryTouch/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
