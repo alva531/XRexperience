@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Unity.Mathematics;
+using UnityEngine.Animations;
 
 public class ScanTest : MonoBehaviour
 {
@@ -38,6 +39,14 @@ public class ScanTest : MonoBehaviour
 
     [SerializeField]
     InputAction dragAR;
+
+    [SerializeField]
+    InputAction twistStartAR;
+    [SerializeField]
+    InputAction twistAR;
+
+
+
     void Awake()
     {
         instanceofThingtoSpawn = null;
@@ -52,17 +61,21 @@ public class ScanTest : MonoBehaviour
         touchCountAR = assEt.FindAction("Screen Touch Count");
         touchPosAR =  assEt.FindAction("Tap Start Position");
         dragAR = assEt.FindAction("Drag Test");
+        twistAR = assEt.FindAction("Twist Delta Rotation");
+        twistStartAR = assEt.FindAction("Twist Start Position");
         
         touchAR.Enable();
         touchCountAR.Enable();
         touchPosAR.Enable();
         dragAR.Enable();
+        twistStartAR.Enable(); 
+        twistAR.Enable();
     }
 
     void Update()
     {
-        print(touchPosAR.ReadValue<Vector2>() );
-        print(touchAR.IsPressed());
+        //print(touchPosAR.ReadValue<Vector2>() );
+        //print(touchAR.IsPressed());
 
         RaycastHit hit;
         Ray ray = ARcam.ScreenPointToRay(touchPosAR.ReadValue<Vector2>());
@@ -82,35 +95,32 @@ public class ScanTest : MonoBehaviour
                     }
                      else
                     {
-                    //     Destroy(GameObject.Find("Canvas"));
                          SpawnPrefab(m_hits[0].pose.position);
-                    //     ArPlaneMgr.GetComponent<ARPlaneManager>().enabled = false;
-                    //     GameObject[] a = GameObject.FindGameObjectsWithTag("Plane");
-
-                    //     foreach (GameObject ca in a )
-                    //     {
-                    //         ca.GetComponent<LineRenderer>().enabled = false;
-                    //         ca.GetComponent<MeshRenderer>().enabled = false;
-                    //         ca.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
-                    //         ca.layer = LayerIgnoreRaycast;
-                    //     }
                     }
                     
                 }
             }
-/*             else if ( touchAR.IsPressed())
-            {
-                if (Physics.Raycast(ray, out hit) && (!instanceofThingtoSpawn2.transform.GetChild(5).gameObject.activeSelf && !instanceofThingtoSpawn2.transform.GetChild(9).gameObject.activeSelf))
-                {
-                    print(hit.collider.gameObject.tag);
-                }
-            } */
 
             if (Mathf.Abs(dragAR.ReadValue<Vector2>().x) > 0f)
             {
                 if (instanceofThingtoSpawn != null)
                 {
-                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                    //instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                }
+            }
+            if (twistAR.ReadValue<float>() > 0)
+            {
+                if (instanceofThingtoSpawn != null)
+                {
+                    Debug.Log("Rota izquierda");
+                    instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
+                }
+            }
+            else if (twistAR.ReadValue<float>() < 0)
+            {
+                if (instanceofThingtoSpawn != null)
+                {
+                    instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
                 }
             }
 

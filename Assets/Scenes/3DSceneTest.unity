@@ -473,6 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1051067770}
   - component: {fileID: 1051067769}
+  - component: {fileID: 1051067771}
   m_Layer: 0
   m_Name: XR Interaction Manager
   m_TagString: Untagged
@@ -509,6 +510,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051067771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051067768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aafed8f78cf16469d903184f65d9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1285761803
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +786,24 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 70553d93-bf42-4f9d-a711-525540339d4c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  twistStartAR:
+    m_Name: Twist Start AR
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4b75c424-edc5-4357-a097-a0052f0a4bbd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  twistAR:
+    m_Name: Twist AR
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2fcc9918-9ccf-45f2-913a-b2ce0f41db33
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
