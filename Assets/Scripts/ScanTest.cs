@@ -95,7 +95,7 @@ public class ScanTest : MonoBehaviour
                     }
                      else
                     {
-                         SpawnPrefab(m_hits[0].pose.position);
+                        SpawnPrefab(m_hits[0].pose.position);
                     }
                     
                 }
@@ -108,21 +108,32 @@ public class ScanTest : MonoBehaviour
                     //instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
                 }
             }
-            if (twistAR.ReadValue<float>() > 0)
+            //if (twistAR.ReadValue<float>() > 0)
+            //{
+            //    if (instanceofThingtoSpawn != null)
+            //    {
+            //        Debug.Log("Rota izquierda");
+            //        instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
+            //    }
+            //}
+
+            if (instanceofThingtoSpawn != null)
             {
-                if (instanceofThingtoSpawn != null)
+                float twistDelta = twistAR.ReadValue<float>();
+
+                if (Mathf.Abs(twistDelta) > 0.01f) // Asegura que el valor no sea insignificante
                 {
-                    Debug.Log("Rota izquierda");
-                    instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
+                    instanceofThingtoSpawn.transform.Rotate(Vector3.up, twistDelta * Time.deltaTime * 100f, Space.World); 
+                }
+            else if (Mathf.Abs(twistDelta) < 0.01f)
+                {
+                    {
+                        instanceofThingtoSpawn.transform.Rotate(Vector3.up, twistDelta * Time.deltaTime * 100f, Space.World);
+                    }
                 }
             }
-            else if (twistAR.ReadValue<float>() < 0)
-            {
-                if (instanceofThingtoSpawn != null)
-                {
-                    instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
-                }
-            }
+            
+                    //instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
 
             return;
         }
