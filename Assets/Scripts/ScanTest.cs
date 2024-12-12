@@ -1,14 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using Unity.Mathematics;
-using UnityEngine.Animations;
 
 public class ScanTest : MonoBehaviour
 {
@@ -27,6 +20,8 @@ public class ScanTest : MonoBehaviour
     float staleDist = 0;
     int LayerIgnoreRaycast;
     public XRIDefaultInputActions assEt;
+
+    bool hitThingToSpawn = false;
     
 
     [SerializeField]
@@ -38,10 +33,14 @@ public class ScanTest : MonoBehaviour
     InputAction touchPosAR;
 
     [SerializeField]
+    InputAction dragCurrentPos;
+
+    [SerializeField]
     InputAction dragAR;
 
     [SerializeField]
     InputAction twistStartAR;
+
     [SerializeField]
     InputAction twistAR;
 
@@ -60,13 +59,15 @@ public class ScanTest : MonoBehaviour
         touchAR = assEt.FindAction("Spawn Object");
         touchCountAR = assEt.FindAction("Screen Touch Count");
         touchPosAR =  assEt.FindAction("Tap Start Position");
-        dragAR = assEt.FindAction("Drag Test");
+        dragAR = assEt.FindAction("Drag Delta");
+        dragCurrentPos = assEt.FindAction("Drag Current Position");
         twistAR = assEt.FindAction("Twist Delta Rotation");
         twistStartAR = assEt.FindAction("Twist Start Position");
         
         touchAR.Enable();
         touchCountAR.Enable();
         touchPosAR.Enable();
+        dragCurrentPos.Enable();
         dragAR.Enable();
         twistStartAR.Enable(); 
         twistAR.Enable();
@@ -82,60 +83,47 @@ public class ScanTest : MonoBehaviour
 
         if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits) && touchAR.IsPressed())
         {
-            if (instanceofThingtoSpawn == null)
-            {
-
-
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.collider.gameObject.tag == "Spawnable")
                     {
                         instanceofThingtoSpawn = hit.collider.gameObject;
-                        
+                        hitThingToSpawn = true;
                     }
-                     else
+                     else if (instanceofThingtoSpawn == null)
                     {
                         SpawnPrefab(m_hits[0].pose.position);
                     }
-                    
                 }
-            }
 
-            if (Mathf.Abs(dragAR.ReadValue<Vector2>().x) > 0f)
+            // Posición
+
+            if (hitThingToSpawn == true && touchAR.IsPressed())
             {
                 if (instanceofThingtoSpawn != null)
                 {
-                    //instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
                 }
             }
-            //if (twistAR.ReadValue<float>() > 0)
-            //{
-            //    if (instanceofThingtoSpawn != null)
-            //    {
-            //        Debug.Log("Rota izquierda");
-            //        instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
-            //    }
-            //}
 
+            // Rotación
+            
             if (instanceofThingtoSpawn != null)
             {
                 float twistDelta = twistAR.ReadValue<float>();
 
-                if (Mathf.Abs(twistDelta) > 0.01f) // Asegura que el valor no sea insignificante
+                if (Mathf.Abs(twistDelta) > 0.01f)
                 {
                     instanceofThingtoSpawn.transform.Rotate(Vector3.up, twistDelta * Time.deltaTime * 100f, Space.World); 
                 }
-            else if (Mathf.Abs(twistDelta) < 0.01f)
-                {
-                    {
-                        instanceofThingtoSpawn.transform.Rotate(Vector3.up, twistDelta * Time.deltaTime * 100f, Space.World);
-                    }
-                }
             }
-            
-                    //instanceofThingtoSpawn.transform.rotation = Quaternion.AngleAxis(twistAR.ReadValue<float>(), Vector3.up);
 
             return;
+        }
+
+        if (touchAR.IsPressed() == false)
+        {
+            hitThingToSpawn = false;
         }
 
     }

@@ -781,6 +781,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  dragCurrentPos:
+    m_Name: Drag Current Pos
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6d2847ec-2008-4e28-8a36-2ecca5105c15
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   dragAR:
     m_Name: Drag AR
     m_Type: 0
