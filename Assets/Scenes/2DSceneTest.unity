@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1334187224}
-  thingtospawn: {fileID: 8986328500875594450, guid: d825bbdf58c379d4290da92e387f71d0,
+  thingtospawn: {fileID: 6400743440509336276, guid: f360a300a3f9ce34ba0ed9e687167a8d,
     type: 3}
   thingtospawn2: {fileID: 0}
   ArPlaneMgr: {fileID: 1334187223}

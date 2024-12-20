@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PlaneDetectTest.unity
     guid: 595ea1eb8ab1e3a4981621109d080aa6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3DSceneTest.unity
     guid: 4e4b2aee568756b4fbade48026ce1437
+  - enabled: 1
+    path: Assets/Scenes/2DSceneTest.unity
+    guid: 82ad479177fcb6a4cb6ffca0ed72d30b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
