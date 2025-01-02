@@ -44,8 +44,6 @@ public class ScanTest : MonoBehaviour
     [SerializeField]
     InputAction twistAR;
 
-
-
     void Awake()
     {
         instanceofThingtoSpawn = null;
@@ -132,5 +130,10 @@ public class ScanTest : MonoBehaviour
     {
         instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
         instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
+
+        foreach (var plane in ArPlaneMgr.GetComponent<ARPlaneManager>().trackables)
+        {
+            plane.gameObject.SetActive(false);
+        }
     }
 }

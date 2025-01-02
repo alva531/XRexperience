@@ -817,6 +817,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  PlaneDetect: {fileID: 1334187225}
 --- !u!114 &1334187230
 MonoBehaviour:
   m_ObjectHideFlags: 0
