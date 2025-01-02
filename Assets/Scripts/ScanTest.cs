@@ -131,9 +131,9 @@ public class ScanTest : MonoBehaviour
         instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
         instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
 
-        foreach (var plane in ArPlaneMgr.GetComponent<ARPlaneManager>().trackables)
-        {
-            plane.gameObject.SetActive(false);
-        }
+        //foreach (var plane in ArPlaneMgr.GetComponent<ARPlaneManager>().trackables)
+        //{
+            //plane.gameObject.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
+        //}
     }
 }

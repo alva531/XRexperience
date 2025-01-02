@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1334187224}
-  thingtospawn: {fileID: 6400743440509336276, guid: f360a300a3f9ce34ba0ed9e687167a8d,
+  thingtospawn: {fileID: 4572304538524186819, guid: b19d4d57523dd6b4db15563882cfdf08,
     type: 3}
   thingtospawn2: {fileID: 0}
   ArPlaneMgr: {fileID: 1334187223}
@@ -817,7 +817,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  PlaneDetect: {fileID: 1334187225}
 --- !u!114 &1334187230
 MonoBehaviour:
   m_ObjectHideFlags: 0
