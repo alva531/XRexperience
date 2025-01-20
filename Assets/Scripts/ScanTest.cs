@@ -79,8 +79,10 @@ public class ScanTest : MonoBehaviour
         RaycastHit hit;
         Ray ray = ARcam.ScreenPointToRay(touchPosAR.ReadValue<Vector2>());
 
-        if (m_RaycastManager.Raycast(touchPosAR.ReadValue<Vector2>(), m_hits) && touchAR.IsPressed())
+        if (touchAR.IsPressed())
         {
+
+            m_RaycastManager.Raycast(ray, m_hits);
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.collider.gameObject.tag == "Spawnable")
@@ -100,7 +102,7 @@ public class ScanTest : MonoBehaviour
             {
                 if (instanceofThingtoSpawn != null)
                 {
-                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime , 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime );
                 }
             }
 
@@ -135,5 +137,12 @@ public class ScanTest : MonoBehaviour
         //{
             //plane.gameObject.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
         //}
+    }
+
+    private void DeleteThePebete()
+    {
+        Destroy(instanceofThingtoSpawn);
+        hitThingToSpawn = false;
+        instanceofThingtoSpawn = null;
     }
 }
