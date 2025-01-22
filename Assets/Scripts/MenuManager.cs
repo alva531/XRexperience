@@ -22,6 +22,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("2DSceneTest");
     }
 
+    public void Menu() 
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void Exit()
     {
         Application.Quit();

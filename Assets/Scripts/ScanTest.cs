@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -10,8 +11,8 @@ public class ScanTest : MonoBehaviour
     List<ARRaycastHit> m_hits = new List<ARRaycastHit>();
     [SerializeField]
     GameObject thingtospawn;
-    [SerializeField]
-    GameObject thingtospawn2;
+    //[SerializeField]
+    //GameObject thingtospawn2;
     [SerializeField]
     GameObject ArPlaneMgr;
     Camera ARcam;
@@ -22,7 +23,18 @@ public class ScanTest : MonoBehaviour
     public XRIDefaultInputActions assEt;
 
     bool hitThingToSpawn = false;
-    
+
+    bool firstSpawn = false;
+
+
+    [SerializeField] 
+    private GameObject uiText2;
+
+    [SerializeField] 
+    private GameObject moveTutorial;
+
+    [SerializeField] 
+    private GameObject rotationTutorial;
 
     [SerializeField]
     InputAction touchAR;
@@ -131,16 +143,44 @@ public class ScanTest : MonoBehaviour
     private void SpawnPrefab(Vector3 spawnPosition)
     {
         instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
-        instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
+        //instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
 
         //foreach (var plane in ArPlaneMgr.GetComponent<ARPlaneManager>().trackables)
         //{
             //plane.gameObject.GetComponent<ARPlaneMeshVisualizer>().enabled = false;
         //}
+        firstSpawn = true;
+
+        if (firstSpawn)
+        {
+            uiText2.GetComponent<Animator>().SetTrigger("Disappear");
+            StartCoroutine(Tutorial());
+        }
+
     }
 
-    private void DeleteThePebete()
+    private IEnumerator Tutorial()
     {
+        
+        yield return new WaitForSeconds(0.25f);
+        
+        if (moveTutorial != null)
+        {
+            moveTutorial.SetActive(true);
+        }
+        else
+        {
+            rotationTutorial.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(6f);
+
+        rotationTutorial.SetActive(true);
+    }
+
+    public void DeleteThePebete()
+    {
+        Debug.Log("BORRAR TODO");
         Destroy(instanceofThingtoSpawn);
         hitThingToSpawn = false;
         instanceofThingtoSpawn = null;
