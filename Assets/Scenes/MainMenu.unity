@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1931243689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1931243689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: Scene2D
         m_Mode: 1
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931243687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b300b3ffb086ab4bb2bf651ba7f2ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c8440e0e58013b42b74b96a3049c03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2029640968
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1931243689}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: Scene3D
         m_Mode: 1

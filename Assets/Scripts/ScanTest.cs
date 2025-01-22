@@ -178,9 +178,8 @@ public class ScanTest : MonoBehaviour
         rotationTutorial.SetActive(true);
     }
 
-    public void DeleteThePebete()
+    public void Delete()
     {
-        Debug.Log("BORRAR TODO");
         Destroy(instanceofThingtoSpawn);
         hitThingToSpawn = false;
         instanceofThingtoSpawn = null;
