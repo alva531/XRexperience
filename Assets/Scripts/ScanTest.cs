@@ -25,8 +25,7 @@ public class ScanTest : MonoBehaviour
     bool hitThingToSpawn = false;
 
     bool firstSpawn = false;
-
-
+    
     [SerializeField] 
     private GameObject uiText2;
 
@@ -114,7 +113,7 @@ public class ScanTest : MonoBehaviour
             {
                 if (instanceofThingtoSpawn != null)
                 {
-                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime , 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime );
+                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
                 }
             }
 
