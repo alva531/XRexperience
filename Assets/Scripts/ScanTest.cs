@@ -55,8 +55,13 @@ public class ScanTest : MonoBehaviour
     [SerializeField]
     InputAction twistAR;
 
+    float dragSpeed = 2;
+
+    Vector2 LastPos;
+
     void Awake()
     {
+        LastPos = new Vector2(0,0);
         instanceofThingtoSpawn = null;
         ARcam = GameObject.Find("Main Camera").GetComponent<Camera>();
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
@@ -111,12 +116,12 @@ public class ScanTest : MonoBehaviour
 
             if (hitThingToSpawn == true && touchAR.IsPressed())
             {
-                if (instanceofThingtoSpawn != null)
+                if (instanceofThingtoSpawn != null && LastPos != dragCurrentPos.ReadValue<Vector2>())
                 {
-                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * Time.deltaTime);
+                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * dragSpeed * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * dragSpeed * Time.deltaTime);
                 }
             }
-
+            LastPos = dragCurrentPos.ReadValue<Vector2>();
             // Rotación
             
             if (instanceofThingtoSpawn != null)
