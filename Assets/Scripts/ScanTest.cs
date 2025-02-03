@@ -11,6 +11,10 @@ public class ScanTest : MonoBehaviour
     List<ARRaycastHit> m_hits = new List<ARRaycastHit>();
     [SerializeField]
     GameObject thingtospawn;
+
+    [SerializeField]
+    bool _2DScene;
+
     //[SerializeField]
     //GameObject thingtospawn2;
     [SerializeField]
@@ -114,14 +118,14 @@ public class ScanTest : MonoBehaviour
 
             // Posición
 
-            if (hitThingToSpawn == true && touchAR.IsPressed())
-            {
-                if (instanceofThingtoSpawn != null && LastPos != dragCurrentPos.ReadValue<Vector2>())
-                {
-                    instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * dragSpeed * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * dragSpeed * Time.deltaTime);
-                }
-            }
-            LastPos = dragCurrentPos.ReadValue<Vector2>();
+            // if (hitThingToSpawn == true && touchAR.IsPressed())
+            // {
+            //     if (instanceofThingtoSpawn != null && LastPos != dragCurrentPos.ReadValue<Vector2>())
+            //     {
+            //         instanceofThingtoSpawn.transform.position += new Vector3(dragAR.ReadValue<Vector2>().normalized.x * dragSpeed * Time.deltaTime, 0, dragAR.ReadValue<Vector2>().normalized.y * dragSpeed * Time.deltaTime);
+            //     }
+            // }
+            // LastPos = dragCurrentPos.ReadValue<Vector2>();
             // Rotación
             
             if (instanceofThingtoSpawn != null)
@@ -147,6 +151,11 @@ public class ScanTest : MonoBehaviour
     private void SpawnPrefab(Vector3 spawnPosition)
     {
         instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
+        if (_2DScene == true)
+        {
+            instanceofThingtoSpawn.GetComponent<Transform>().Rotate(90,0,0);
+            instanceofThingtoSpawn.GetComponent<Transform>().localPosition = new Vector3(instanceofThingtoSpawn.GetComponent<Transform>().localPosition.x, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.y +0.001f, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.z);
+        }
         //instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
 
         //foreach (var plane in ArPlaneMgr.GetComponent<ARPlaneManager>().trackables)

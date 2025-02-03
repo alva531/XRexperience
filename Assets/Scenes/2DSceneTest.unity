@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_RaycastManager: {fileID: 1334187224}
   thingtospawn: {fileID: 4572304538524186819, guid: b19d4d57523dd6b4db15563882cfdf08,
     type: 3}
+  _2DScene: 1
   ArPlaneMgr: {fileID: 1334187223}
   uiText2: {fileID: 748427645}
   moveTutorial: {fileID: 0}

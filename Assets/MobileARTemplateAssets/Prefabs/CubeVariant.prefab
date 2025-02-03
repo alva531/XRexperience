@@ -60,6 +60,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2996392715678626154, guid: ebd7292e888c84f05924605e51048072,
         type: 3}
+      propertyPath: m_MovementType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2996392715678626154, guid: ebd7292e888c84f05924605e51048072,
+        type: 3}
       propertyPath: m_AttachTransform
       value: 
       objectReference: {fileID: 6344147939932178603}
