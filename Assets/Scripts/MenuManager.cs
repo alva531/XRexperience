@@ -7,28 +7,73 @@ using UnityEngine.Rendering;
 
 public class MenuManager : MonoBehaviour
 {
+
+    [SerializeField]
+    Animator fade;
     public void PlaneScene() 
     {
-        SceneManager.LoadScene("PlaneDetectTest");
+        fade.SetTrigger("end");
+        StartCoroutine(Plane2());
     }
 
     public void Scene3D() 
     {
-        SceneManager.LoadScene("3DSceneTest");
+        fade.SetTrigger("end");
+        StartCoroutine(Scene3D2());
     }
 
     public void Scene2D() 
     {
-        SceneManager.LoadScene("2DSceneTest");
+        fade.SetTrigger("end");
+        StartCoroutine(Scene2D2());
+        
     }
 
     public void Menu() 
     {
-        SceneManager.LoadScene("MainMenu");
+        fade.SetTrigger("end");
+        StartCoroutine(Menu2());
     }
 
     public void Exit()
     {
+        fade.SetTrigger("end");
+        StartCoroutine(Exit2());
+    }
+
+    IEnumerator Plane2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene("PlaneDetectTest");
+    }
+
+    IEnumerator Scene3D2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene("3DSceneTest");
+    }
+
+    IEnumerator Scene2D2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene("2DSceneTest");
+    }
+
+    IEnumerator Menu2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator Exit2()
+    {
+        yield return new WaitForSeconds(0.5f);
+
         Application.Quit();
     }
+
 }
