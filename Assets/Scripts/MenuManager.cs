@@ -43,35 +43,35 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator Plane2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadScene("PlaneDetectTest");
     }
 
     IEnumerator Scene3D2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadScene("3DSceneTest");
     }
 
     IEnumerator Scene2D2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadScene("2DSceneTest");
     }
 
     IEnumerator Menu2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator Exit2()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
 
         Application.Quit();
     }
