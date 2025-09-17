@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_VelocityDamping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2996392715678626154, guid: ebd7292e888c84f05924605e51048072,
+        type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3435864238947048048, guid: ebd7292e888c84f05924605e51048072,
         type: 3}
       propertyPath: m_TagString

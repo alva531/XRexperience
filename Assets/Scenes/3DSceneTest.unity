@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 4314056983634928645, guid: 7218772ff6f3f564085e6065b32ca145,
     type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!114 &1334187226
 MonoBehaviour:
   m_ObjectHideFlags: 0
