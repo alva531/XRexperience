@@ -150,11 +150,16 @@ public class ScanTest : MonoBehaviour
 
     private void SpawnPrefab(Vector3 spawnPosition)
     {
-        instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
+        if (_2DScene == false)
+        {
+            instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition, Quaternion.identity);
+        }
+        
         if (_2DScene == true)
         {
-            instanceofThingtoSpawn.GetComponent<Transform>().Rotate(90,0,0);
-            instanceofThingtoSpawn.GetComponent<Transform>().localPosition = new Vector3(instanceofThingtoSpawn.GetComponent<Transform>().localPosition.x, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.y +0.001f, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.z);
+            instanceofThingtoSpawn = Instantiate(thingtospawn, spawnPosition + new Vector3 (0, 0.015f, 0), Quaternion.identity);
+            instanceofThingtoSpawn.GetComponent<Transform>().Rotate(90, 0, 0);
+            instanceofThingtoSpawn.GetComponent<Transform>().localPosition = new Vector3(instanceofThingtoSpawn.GetComponent<Transform>().localPosition.x, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.y + 0.001f, instanceofThingtoSpawn.GetComponent<Transform>().localPosition.z);
         }
         //instanceofThingtoSpawn2 = Instantiate(thingtospawn2, spawnPosition, Quaternion.identity);
 
