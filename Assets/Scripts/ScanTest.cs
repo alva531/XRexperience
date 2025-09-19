@@ -197,4 +197,9 @@ public class ScanTest : MonoBehaviour
         hitThingToSpawn = false;
         instanceofThingtoSpawn = null;
     }
+
+    public void CleanUpInputGestures()
+    {
+        assEt.Disable();
+    }
 }

@@ -10,6 +10,14 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField]
     Animator fade;
+
+    private ScanTest ScanTest;
+
+    private void Awake()
+    {
+        ScanTest = GameObject.Find("XR Origin (Mobile AR)").GetComponent<ScanTest>();
+    }
+
     public void PlaneScene() 
     {
         fade.SetTrigger("end");
@@ -64,6 +72,10 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator Menu2()
     {
+        if (ScanTest != null)
+        {
+            ScanTest.assEt.Disable();
+        }
         yield return new WaitForSeconds(0.25f);
 
         SceneManager.LoadScene("MainMenu");
